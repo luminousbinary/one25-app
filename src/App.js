@@ -1,5 +1,6 @@
 import "./App.css";
 import Accordian from "./components/accordian";
+import Appointment from "./components/appointment";
 import ModalTest from "./components/custom-modal/modal-test";
 import TabTest from "./components/custom-tabs/tab-test";
 import DarkLightMode from "./components/dark-light-mode";
@@ -54,7 +55,10 @@ function App() {
       {/* <UrlShortner /> */}
 
       {/* login component */}
-      <Login />
+      {/* <Login /> */}
+
+      {/* appointment component */}
+      <Appointment />
     </div>
   );
 }
