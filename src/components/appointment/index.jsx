@@ -25,13 +25,13 @@ export default function Appointment() {
       firstName: "",
       lastName: "",
       email: "",
-    //   schedule: [],
+      //   schedule: [],
       confirmationModalOpen: false,
-    //   appointmentDateSelected: false,
-    //   appointmentMeridiem: 0,
-    //   validEmail: true,
-    //   validPhone: true,
-      finished: false,
+      //   appointmentDateSelected: false,
+      //   appointmentMeridiem: 0,
+      //   validEmail: true,
+      //   validPhone: true,
+      //   finisShed: false,
       smallScreen: window.innerWidth < 768,
       //   stepIndex: 0,
     };
@@ -43,12 +43,12 @@ export default function Appointment() {
   const [appointmentDate, SetAppointmentDate] = useState(null);
   const [appointmentSlot, SetAppointmentSlot] = useState(null);
   const [appointmentMeridiem, SetAppointmentMeridiem] = useState(0);
-    const [schedule, SetSchedule] = useState([]);
-    const [appointmentDateSelected, SetAppointmentDateSelected] = useState(false);
-    const [validEmail, SetValidEmail] = useState(true);
-    const [validPhone, SetValidPhone] = useState(true);
-    // const [validEmail, SetValidEmail] = useState(0);
-    // const [validEmail, SetValidEmail] = useState(0);
+  const [schedule, SetSchedule] = useState([]);
+  const [appointmentDateSelected, SetAppointmentDateSelected] = useState(false);
+  const [validEmail, SetValidEmail] = useState(true);
+  const [validPhone, SetValidPhone] = useState(true);
+  const [finished, SetFinished] = useState(false);
+  // const [validEmail, SetValidEmail] = useState(0);
 
   async function componentWillMount() {
     const response = await axios.get(API_BASE + `api/retrieveSlots`);
@@ -60,7 +60,7 @@ export default function Appointment() {
   }
   function handleNext() {
     SetStepIndex(stepIndex + 1);
-    // finished: stepIndex >= 2,
+    SetFinished(stepIndex >= 2);
   }
   function handlePrev() {
     if (stepIndex > 0) {
@@ -73,13 +73,13 @@ export default function Appointment() {
       /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$    /i;
     return regex.test(email)
       ? SetValidEmail({ email: email, validEmail: true })
-      : SetValidEmail(false );
+      : SetValidEmail(false);
   }
   function validatePhone(phoneNumber) {
     const regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
     return regex.test(phoneNumber)
       ? SetValidPhone({ phone: phoneNumber, validPhone: true })
-      : SetValidPhone( false );
+      : SetValidPhone(false);
   }
 
   function handleSetAppointmentDate(date) {
@@ -98,7 +98,7 @@ export default function Appointment() {
   function checkDisableDate(day) {
     const dateString = moment(day).format("YYYY-DD-MM");
     return (
-  schedule[dateString] === true ||
+      schedule[dateString] === true ||
       moment(day).startOf("day").diff(moment().startOf("day")) < 0
     );
   }
@@ -140,29 +140,26 @@ export default function Appointment() {
         return null;
       }
     }
-    this.setState({
-      schedule: schedule,
-    });
+    SetSchedule(schedule);
   }
 
   function renderAppointmentTimes() {
     if (!this.state.isLoading) {
       const slots = [...Array(8).keys()];
       return slots.map((slot) => {
-        const appointmentDateString = moment(this.state.appointmentDate).format(
-          "YYYY-DD-MM"
-        );
+        const appointmentDateString =
+          moment(appointmentDate).format("YYYY-DD-MM");
         const time1 = moment().hour(9).minute(0).add(slot, "hours");
         const time2 = moment()
           .hour(9)
           .minute(0)
           .add(slot + 1, "hours");
-        const scheduleDisabled = this.state.schedule[appointmentDateString]
-          ? this.state.schedule[
-              moment(this.state.appointmentDate).format("YYYY-DD-MM")
-            ][slot]
+        const scheduleDisabled = schedule[appointmentDateString]
+          ? schedule[moment(appointmentDate).format("YYYY-DD-MM")][
+              slot
+            ]
           : false;
-        const meridiemDisabled = this.state.appointmentMeridiem
+        const meridiemDisabled = appointmentMeridiem
           ? time1.format("a") === "am"
           : time1.format("a") === "pm";
         return (
@@ -202,16 +199,14 @@ export default function Appointment() {
         <p>
           Appointment:{" "}
           <span style={spanStyle}>
-            {moment(this.state.appointmentDate).format(
-              "dddd[,] MMMM Do[,] YYYY"
-            )}
+            {moment(appointmentDate).format("dddd[,] MMMM Do[,] YYYY")}
           </span>{" "}
           at{" "}
           <span style={spanStyle}>
             {moment()
               .hour(9)
               .minute(0)
-              .add(this.state.appointmentSlot, "hours")
+              .add(appointmentSlot, "hours")
               .format("h:mm a")}
           </span>
         </p>
@@ -225,8 +220,8 @@ export default function Appointment() {
       name: this.state.firstName + " " + this.state.lastName,
       email: this.state.email,
       phone: this.state.phone,
-      slot_date: moment(this.state.appointmentDate).format("YYYY-DD-MM"),
-      slot_time: this.state.appointmentSlot,
+      slot_date: moment(appointmentDate).format("YYYY-DD-MM"),
+      slot_time: appointmentSlot,
     };
     axios
       .post(API_BASE + "api/appointmentCreate", newAppointment)
@@ -248,7 +243,7 @@ export default function Appointment() {
 
   {
     const {
-      finished,
+      //   finished,
       isLoading,
       smallScreen,
       stepIndex,
@@ -261,14 +256,14 @@ export default function Appointment() {
       data.lastName &&
       data.phone &&
       data.email &&
-      data.validPhone &&
-      data.validEmail;
+      validPhone &&
+      validEmail;
     const DatePickerExampleSimple = () => (
       <div>
         <DatePicker
           hintText="Select Date"
           mode={smallScreen ? "portrait" : "landscape"}
-          onChange={(n, date) => this.handleSetAppointmentDate(date)}
+          onChange={(n, date) => handleSetAppointmentDate(date)}
           shouldDisableDate={(day) => this.checkDisableDate(day)}
         />
       </div>
@@ -283,7 +278,7 @@ export default function Appointment() {
         label="Confirm"
         style={{ backgroundColor: "#00C853 !important" }}
         primary={true}
-        onClick={() => this.handleSubmit()}
+        onClick={() => handleSubmit()}
       />,
     ];
     return (
@@ -357,16 +352,16 @@ export default function Appointment() {
                     {this.renderStepActions(0)}
                   </StepContent>
                 </Step>
-                <Step disabled={!data.appointmentDate}>
+                <Step disabled={!appointmentDate}>
                   <StepLabel>
                     Choose an available time for your appointment
                   </StepLabel>
                   <StepContent>
                     <SelectField
                       floatingLabelText="AM/PM"
-                      value={data.appointmentMeridiem}
+                      value={appointmentMeridiem}
                       onChange={(evt, key, payload) =>
-                        this.handleSetAppointmentMeridiem(payload)
+                        handleSetAppointmentMeridiem(payload)
                       }
                       selectionRenderer={(value) => (value ? "PM" : "AM")}
                     >
@@ -381,7 +376,7 @@ export default function Appointment() {
                       name="appointmentTimes"
                       defaultSelected={data.appointmentSlot}
                       onChange={(evt, val) =>
-                        this.handleSetAppointmentSlot(val)
+                        handleSetAppointmentSlot(val)
                       }
                     >
                       {this.renderAppointmentTimes()}
@@ -421,13 +416,9 @@ export default function Appointment() {
                           hintText="youraddress@mail.com"
                           floatingLabelText="Email"
                           errorText={
-                            data.validEmail
-                              ? null
-                              : "Enter a valid email address"
+                            validEmail ? null : "Enter a valid email address"
                           }
-                          onChange={(evt, newValue) =>
-                            this.validateEmail(newValue)
-                          }
+                          onChange={(evt, newValue) => validateEmail(newValue)}
                         />
                         <TextField
                           style={{ display: "block" }}
@@ -435,13 +426,9 @@ export default function Appointment() {
                           hintText="+2348995989"
                           floatingLabelText="Phone"
                           errorText={
-                            data.validPhone
-                              ? null
-                              : "Enter a valid phone number"
+                            validPhone ? null : "Enter a valid phone number"
                           }
-                          onChange={(evt, newValue) =>
-                            this.validatePhone(newValue)
-                          }
+                          onChange={(evt, newValue) => validatePhone(newValue)}
                         />
                         <button
                           style={{
