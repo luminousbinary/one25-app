@@ -4,7 +4,7 @@ import "./rand-color.css";
 // #123456
 // rgb(12,34,56)
 
-export default function RandColor() {
+export default function RandomColor() {
   // create a variable to store the current type (rgb or hex) and aother to store the current ccolor
   const [colorType, setColorType] = useState("hex");
   const [currentColor, setCurrentColor] = useState("#000000");

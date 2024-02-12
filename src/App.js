@@ -1,6 +1,6 @@
 import './App.css';
 import Accordian from './components/accordian';
-import RandColor from './components/randColor';
+import RandomColor from './components/random-color';
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
      {/* accordian components */}
      {/* <Accordian/> */}
      {/* random color components */}
-     <RandColor/>
+     <RandomColor/>
     </div>
   );
 }
