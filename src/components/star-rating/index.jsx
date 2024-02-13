@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BsStar } from "react-icons/bs";
 import "./star.css";
 
 export default function StarRating({ noOfStars = 5 }) {
@@ -17,12 +18,13 @@ export default function StarRating({ noOfStars = 5 }) {
 
   return (
     <div className="wrapper-container">
+        <div>Star Rating </div>
       <div className="star-rating">
         {[...Array(noOfStars)].map((_, index) => {
           index += 1;
 
           return (
-            <div
+            <BsStar
               key={index}
               className={
                 index <= (onHover|| starRating ) ? "active" : "inactive"
@@ -30,9 +32,7 @@ export default function StarRating({ noOfStars = 5 }) {
               onClick={() => handleStarRating(index)}
               onMouseMove={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
-            >
-              star
-            </div>
+            />
           );
         })}
       </div>
