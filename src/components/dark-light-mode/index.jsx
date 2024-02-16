@@ -18,5 +18,5 @@ export default function DarkLightMode() {
       <button onClick={handleToggleTheme}>Change theme</button>
     </div>
   );
-  orex 
+  // orex 
 }

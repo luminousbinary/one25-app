@@ -1,16 +1,16 @@
 :root{
     --background: #000;
     --text-primary: #fff;
-    --button-bg: #000;
-    --button-text: #fff;
+    --button-bg: #fff;
+    --button-text: #000;
 }
 
 
 [data-theme= 'light']{
     --background: #fff;
     --text-primary: #000;
-    --button-bg: #fff;
-    --button-text: #000 ;
+    --button-bg: #000;
+    --button-text: #fff ;
 }
 
 .dark-light-mode{
@@ -31,6 +31,7 @@
     background-color: var(--button-bg);
     color: var(--button-text);
     border: none;
-    height: 60px;
-    width: 90px;
+    border-radius: 13px 30px;
+    height: 50px;
+    width: 180px;
 }
