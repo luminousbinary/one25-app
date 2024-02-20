@@ -5,7 +5,6 @@ export default function Login({}) {
     <div className="login-container">
       <div className="login-wrapper">
         <h2 className='title'>Welcome</h2>
-
         <div className="email-wrap input-wrp">
           <label htmlFor="email"> Email</label>
           <input
