@@ -1,5 +1,6 @@
 import "./App.css";
 import Accordian from "./components/accordian";
+import TabTest from "./components/custom-tabs/tab-test";
 import DarkLightMode from "./components/dark-light-mode";
 import ImageSlider from "./components/image-slider";
 import LoadMoreData from "./components/load-more-data";
@@ -38,7 +39,10 @@ function App() {
       {/* <DarkLightMode /> */}
 
       {/* scroll indicator component  */}
-      <ScrollIndcator url={'https://dummyjson.com/products?limit=99'} />
+      {/* <ScrollIndcator url={'https://dummyjson.com/products?limit=99'} /> */}
+      
+      {/* current tab changes */}
+      <TabTest />
     </div>
   );
 }
