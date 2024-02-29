@@ -11,6 +11,7 @@ import ScrollIndcator from "./components/scroll-indicator";
 import StarRating from "./components/star-rating";
 import TreeView from "./components/tree-view";
 import menus from "./components/tree-view/data";
+import UrlShortner from "./components/url-shotner";
 
 function App() {
   return (
@@ -41,13 +42,15 @@ function App() {
 
       {/* scroll indicator component  */}
       {/* <ScrollIndcator url={'https://dummyjson.com/products?limit=99'} /> */}
-      
+
       {/* current tab changes component*/}
       {/* <TabTest /> */}
 
       {/* show modal compponent  */}
-      <ModalTest />
+      {/* <ModalTest /> */}
 
+      {/* sjort link generator */}
+      <UrlShortner />
     </div>
   );
 }

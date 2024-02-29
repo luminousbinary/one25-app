@@ -1,0 +1,41 @@
+.url-shortner-container {
+    width: 100vw;
+    height: 100vh;
+    background: gray;
+    display: flex;
+    flex-direction: column;
+}
+
+.url-shortner-input>input {
+    height: 40px;
+    width: 200px;
+    border: none;
+    margin: 5px;
+
+}
+
+.url-shortner-input>button {
+    height: 40px;
+    width: 100px;
+    border: none;
+    margin: 5px;
+    background: cornflowerblue;
+}
+
+
+.short-url-result>input {
+    height: 40px;
+    width: 150px;
+    border: none;
+    background: gainsboro;
+    margin: 5px;
+
+}
+
+.short-url-result>button {
+    height: 40px;
+    width: 60px;
+    border: none;
+    background: rgb(8, 190, 8);
+    margin: 5px;
+}
