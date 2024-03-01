@@ -5,6 +5,7 @@ import TabTest from "./components/custom-tabs/tab-test";
 import DarkLightMode from "./components/dark-light-mode";
 import ImageSlider from "./components/image-slider";
 import LoadMoreData from "./components/load-more-data";
+import Login from "./components/login-register/login";
 import QrCodeGenerator from "./components/qr-code-generator";
 import RandomColor from "./components/random-color";
 import ScrollIndcator from "./components/scroll-indicator";
@@ -49,8 +50,11 @@ function App() {
       {/* show modal compponent  */}
       {/* <ModalTest /> */}
 
-      {/* sjort link generator */}
-      <UrlShortner />
+      {/* sjort link generator component */}
+      {/* <UrlShortner /> */}
+
+      {/* login component */}
+      <Login />
     </div>
   );
 }
