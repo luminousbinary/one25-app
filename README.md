@@ -5,6 +5,7 @@
     <ol>
     <li>Accordian</li>
     <li>Image slider</li>
+    <li>Log in</li>
     </ol>
 
 # Getting Started with Create React App
