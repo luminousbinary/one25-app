@@ -1,3 +1,13 @@
+    # The One Twenty Five
+    This project is a series of development steps to creating a well defined and organized piece of work of code that comprises of react components (must know basics) that can be implemented anywhere on a website/webpage.
+
+    the components are included:
+    <ol>
+    <li>Accordian</li>
+    <li>Image slider</li>
+    <li>Log in</li>
+    </ol>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

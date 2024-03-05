@@ -1,0 +1,12 @@
+
+.tree-view-wrapper{
+    height: 100vh;
+    width: 600px;
+    background: orchid;
+}
+
+
+.menu-item-label{
+    display: flex;
+    gap: 20px;
+}

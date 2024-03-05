@@ -4,8 +4,8 @@
 }
 
 .active{
-    color: blue;
-    background: salmon;
+    color: rgb(229, 255, 0);
+    fill:  rgb(229, 255, 0) ;
 }
 .inactive {
     color: black;
