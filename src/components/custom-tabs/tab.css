@@ -1,0 +1,36 @@
+.tabs-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+}
+
+.teb-heading {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    
+}
+
+
+.tab-item{
+    padding: 12px;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: aquamarine;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.tab-item.active{
+    color: blueviolet;
+    background: orange;
+}
+
+
+.tab-content { 
+
+    height: 200px;
+    padding: 10px;
+    color: green;
+}

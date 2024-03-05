@@ -1,0 +1,80 @@
+
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-container {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('https://1.bp.blogspot.com/-sTxAHAxirGM/WVbAe2098nI/AAAAAAABENs/_I5sYMYgLOUzaIE7FfF4qdGX-hoAkq9SgCLcBGAs/s1600/Blog_20170624_113552.jpg%22');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.login-wrapper {
+    position: absolute;
+    background: rgba(90, 81, 81, 0.7);
+    width: 500px;
+    height: 400px;
+    padding: 40px 30px;
+    border: transparent;
+    border-radius: 15px;
+    color: white;
+
+}
+
+
+.input-wrp {
+    /* background: green; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.email-wrap {
+    margin: 10px;
+    padding: 13px;
+}
+
+#email {
+    width: 100%;
+    height: 35px;
+    margin-top: 5px;
+    border-radius: 12px;
+    border: green solid 1px;
+    background: rgba(236, 229, 229, 0.6);
+}
+
+.password-wrap {
+    margin: 10px;
+    padding: 13px;
+}
+
+#password {
+    width: 100%;
+    height: 35px;
+    margin-top: 5px;
+    border-radius: 12px;
+    border: red solid 1px;
+    background: rgba(236, 229, 229, 0.6);
+
+}
+
+
+
+
+.login-btn {
+    /* background: rgb(0, 0, 255); */
+    width: 300px;
+    height: 45px;
+    background: rgba(0, 0, 255, 0.5);
+    border-radius: 12px;
+    margin: 10px;
+    padding: 13px;
+    color: white;
+    border: 1px rgb(0, 0, 255);
+}
